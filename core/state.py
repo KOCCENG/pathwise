@@ -4,13 +4,18 @@ from operator import add
 
 class LearnPathState(TypedDict):
 
-    # Provided by the user — no agent modifies these
+    # Provided by the user
     topic: str
+    goal: str
     weekly_hours: int
+    language: str  # detected from topic input, e.g. "Turkish", "English"
+
+    # Assessment
+    assessment_questions: list[str]
+    assessment_answers: list[str]
 
     # Written by Level Agent
     level: str
-    assessment_qa: list[str]
 
     # Written by Roadmap Agent
     roadmap: list[str]

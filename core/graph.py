@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph, END
 
-from state import LearnPathState
-from agents import (
+from core.state import LearnPathState
+from core.agents import (
     level_agent,
     roadmap_agent,
     resource_agent,
@@ -51,11 +51,11 @@ builder.add_edge("weekly_plan_agent", "progress_agent")
 
 # 4. Conditional edge — decide after progress_agent
 builder.add_conditional_edges(
-    "progress_agent",     # source node
-    should_update_plan,   # decision function
+    "progress_agent",
+    should_update_plan,
     {
-        "update": "roadmap_agent",  # if "update" → go back
-        "finish": END,              # if "finish" → terminate
+        "update": "roadmap_agent",
+        "finish": END,
     },
 )
 
